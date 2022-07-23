@@ -6,13 +6,10 @@ public class durationString {
           return "Invalid value";
       }
 
-      int totalSeconds = getRemainingAmountOfIntervalOfTime(seconds);
-      int addedSeconds = convertToNextIntervalOfTime(minutes);
-      int totalMinutes = minutes + addedSeconds;
-      int remainingMinutes = getRemainingAmountOfIntervalOfTime(totalMinutes);
-      int totalHours = convertToNextIntervalOfTime(totalMinutes);
+      int remainingMinutes = getRemainingAmountOfIntervalOfTime(minutes);
+      int totalHours = convertToNextIntervalOfTime(minutes);
 
-      return sanitizeValues(totalHours) + "h " + sanitizeValues(remainingMinutes) + "m "+ sanitizeValues(totalSeconds) +'s';
+      return sanitizeValues(totalHours) + "h " + sanitizeValues(remainingMinutes) + "m "+ sanitizeValues(seconds) +'s';
     }
 
     public static String getDurationString(int seconds){
@@ -22,15 +19,15 @@ public class durationString {
         return getDurationString(totalMinutes,totalSeconds);
     }
 
-    public static int convertToNextIntervalOfTime(int value){
+    private static int convertToNextIntervalOfTime(int value){
         return value / 60;
     }
 
-    public static int getRemainingAmountOfIntervalOfTime(int value){
+    private static int getRemainingAmountOfIntervalOfTime(int value){
         return value % 60;
     }
 
-    public static String sanitizeValues(int value){
+    private static String sanitizeValues(int value){
         String stringifiedResult = String.valueOf(value);
         if (value <= 9){
          stringifiedResult = "0" + stringifiedResult;
