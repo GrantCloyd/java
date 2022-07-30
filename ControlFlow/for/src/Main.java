@@ -8,8 +8,10 @@ public class Main {
 //            double rate = 1.00 + i;
 //            System.out.println(amount + " at " + rate + " = " + String.format("%.2f",calculateInterest(amount, rate)));
 //        }
-        countPrimeNumbersInclusiveBetweenNumbers(1, 1200);
-        countPrimeNumbersInclusiveBetweenNumbers(2000, 3000);
+//        countPrimeNumbersInclusiveBetweenNumbers(1, 1200);
+//        countPrimeNumbersInclusiveBetweenNumbers(2000, 3000);
+
+        System.out.println(sumOfThreeAndFive(1, 1000));
     }
 
     public static void countPrimeNumbersInclusiveBetweenNumbers(int firstNumber, int secondNumber){
@@ -38,6 +40,27 @@ public class Main {
 
         return true;
 
+    }
+
+    public static int sumOfThreeAndFive(int x, int y){
+        int sumOfAllNumbers = 0;
+        int numberOfResults = 0;
+
+        for (int i = x; i < y; i++){
+            if (isDivisibleByThreeAndFive(i)){
+                sumOfAllNumbers += i;
+                numberOfResults++;
+                System.out.println("Number " + i + " can be divided by three and  five");
+                if (numberOfResults == 5){
+                    break;
+                }
+            }
+        }
+        return sumOfAllNumbers;
+    }
+
+    public static boolean isDivisibleByThreeAndFive(int a){
+        return a % 5 == 0 && a % 3 == 0;
     }
 
 
