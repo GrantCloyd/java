@@ -78,12 +78,11 @@ public class Main {
             int reverseNumber = reverse(number);
             int digitCount = getDigitCount(number);
             int currentDigit = reverseNumber % 10;
-            String result=  "";
             String finalNumbers = "";
 
             for(int i = 0; i < digitCount; i++){
-                result = switchIntToVerboseString(currentDigit);
-                finalNumbers += result;
+                String intWord = switchIntToVerboseString(currentDigit);
+                finalNumbers += intWord;
                 reverseNumber /= 10;
                 currentDigit = reverseNumber %10;
             }
