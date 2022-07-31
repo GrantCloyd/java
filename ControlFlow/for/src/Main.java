@@ -11,7 +11,10 @@ public class Main {
 //        countPrimeNumbersInclusiveBetweenNumbers(1, 1200);
 //        countPrimeNumbersInclusiveBetweenNumbers(2000, 3000);
 
-        System.out.println(sumOfThreeAndFive(1, 1000));
+//        System.out.println(sumOfThreeAndFive(1, 1000));
+
+        System.out.println(NumberPalindrome.isPalindrome(332233));
+//        System.out.println(sumOfDigits(112345640));
     }
 
     public static void countPrimeNumbersInclusiveBetweenNumbers(int firstNumber, int secondNumber){
@@ -61,6 +64,105 @@ public class Main {
 
     public static boolean isDivisibleByThreeAndFive(int a){
         return a % 5 == 0 && a % 3 == 0;
+    }
+
+    public static boolean isEven(int x){return x % 2 == 0; }
+
+    public class NumberPalindrome {
+
+        public static boolean isPalindromeHacky(int x){
+            String toReverse = Integer.toString(x).replaceAll("-", "");
+            StringBuilder sb = new StringBuilder(toReverse);
+            String reversed = sb.reverse().toString();
+            int reversedInt = Integer.parseInt(reversed);
+            return x == reversedInt || x == (reversedInt * -1);
+        }
+
+        public static boolean isPalindrome(int x){
+            int originalNumber = x;
+            int palindromeNumber = 0;
+
+            if (x < 0) {x *= -1;}
+
+            while (x > 0){
+                int digit = x % 10;
+                palindromeNumber += digit;
+
+                if (x >= 10){
+                    palindromeNumber *= 10;
+                }
+                x /= 10;
+            }
+            return (palindromeNumber == originalNumber) || (palindromeNumber * -1) == originalNumber;
+        }
+
+
+        public static int sumFirstAndLastDigit(int number){
+            if (number < 0){ return -1;}
+
+            int firstDigit = number % 10;
+            int lastDigit = 0;
+            int remainingDigits = number;
+
+            while (remainingDigits > 0){
+                int currentDigit = remainingDigits % 10;
+                remainingDigits /= 10;
+                if (remainingDigits == 0 ){
+                    lastDigit = currentDigit;
+                }
+            }
+
+            return firstDigit + lastDigit;
+
+        }
+
+        public static int getEvenDigitSum(int number){
+            if (number < 0){return -1;}
+
+            int result = 0;
+            int digit = number % 10;
+
+            while (number > 0){
+                if (digit % 2 ==0){
+                    result += digit;
+                }
+                number /= 10;
+                digit = number % 10;
+            }
+
+            return result;
+
+        }
+
+        public static int getGreatestCommonDivisor(int x, int y){
+            if (x < 10 || y < 10){return -1;}
+
+            int lowestNumber = x < y ? x : y;
+            int highestDenom = 0;
+
+            for (int i= 1; i <= lowestNumber; i++){
+                if ((x % i == 0) && (y % i ==0)){
+                    highestDenom = i;
+                }
+            }
+            return highestDenom;
+        }
+
+    }
+
+    public static int sumOfDigits(int number){
+        if (number < 10){
+            return -1;
+        }
+
+        int sumOfDigits = 0;
+
+        while (number > 0){
+            sumOfDigits += number % 10;
+            number /= 10;
+        }
+
+        return sumOfDigits;
     }
 
 
