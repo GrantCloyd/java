@@ -13,8 +13,10 @@ public class Main {
 
 //        System.out.println(sumOfThreeAndFive(1, 1000));
 
-        System.out.println(NumberPalindrome.isPalindrome(332233));
+//        System.out.println(NumberPalindrome.isPalindrome(332233));
 //        System.out.println(sumOfDigits(112345640));
+        NumberToWords.printWords(506607984);
+
     }
 
     public static void countPrimeNumbersInclusiveBetweenNumbers(int firstNumber, int secondNumber){
@@ -67,6 +69,96 @@ public class Main {
     }
 
     public static boolean isEven(int x){return x % 2 == 0; }
+
+    public class NumberToWords {
+        // write your code here
+
+        public static void printWords(int number){
+            if (number < 0){System.out.println("Invalid Value");}
+            int reverseNumber = reverse(number);
+            int digitCount = getDigitCount(number);
+            int currentDigit = reverseNumber % 10;
+            String result=  "";
+            String finalNumbers = "";
+
+            for(int i = 0; i < digitCount; i++){
+                result = switchIntToVerboseString(currentDigit);
+                finalNumbers += result;
+                reverseNumber /= 10;
+                currentDigit = reverseNumber %10;
+            }
+
+            System.out.println(finalNumbers.trim());
+        }
+
+        public static String switchIntToVerboseString(int x){
+            String result = "";
+
+            switch(x) {
+                case 1:
+                    result = "One ";
+                    break;
+                case 2:
+                    result = "Two ";
+                    break;
+                case 3:
+                    result = "Three ";
+                    break;
+                case 4:
+                    result = "Four ";
+                    break;
+                case 5:
+                    result = "Five ";
+                    break;
+                case 6:
+                    result = "Six ";
+                    break;
+                case 7:
+                    result = "Seven ";
+                    break;
+                case 8:
+                    result = "Eight ";
+                    break;
+                case 9:
+                    result = "Nine ";
+                    break;
+                default:
+                    result = "Zero ";
+                    break;
+            }
+            return result;
+        }
+
+        public static int reverse(int x){
+            boolean negative = (x * -1) > 0 ? true : false;
+            int value = negative ? (x * -1) : x;
+            int result = 0;
+
+            while (value > 0){
+                result += value % 10;
+                value /= 10;
+                if (value > 0){
+                    result *= 10;
+                }
+            }
+            result = negative ? result * -1 : result;
+            return result;
+        }
+
+        public static int getDigitCount(int x){
+            if (x < 0){return -1;}
+            int baseTenPower = 0;
+
+            do {
+                baseTenPower++;
+                x /= 10;
+
+            } while (x > 0);
+
+            return baseTenPower;
+        }
+    }
+
 
     public class NumberPalindrome {
 
