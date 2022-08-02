@@ -15,7 +15,8 @@ public class Main {
 
 //        System.out.println(NumberPalindrome.isPalindrome(332233));
 //        System.out.println(sumOfDigits(112345640));
-        NumberToWords.printWords(506607984);
+//        NumberToWords.printWords(506607984);
+          DiagonalStar.printSquareStar(20);
 
     }
 
@@ -125,6 +126,7 @@ public class Main {
                     result = "Zero ";
                     break;
             }
+
             return result;
         }
 
@@ -140,6 +142,7 @@ public class Main {
                     result *= 10;
                 }
             }
+
             result = negative ? result * -1 : result;
             return result;
         }
@@ -151,7 +154,6 @@ public class Main {
             do {
                 baseTenPower++;
                 x /= 10;
-
             } while (x > 0);
 
             return baseTenPower;
@@ -254,6 +256,34 @@ public class Main {
         }
 
         return sumOfDigits;
+    }
+
+    public class DiagonalStar {
+        // write your code here
+        public static void printSquareStar(int number){
+            if (number < 5){
+                System.out.println("Invalid Value");
+                return;
+            }
+
+            for (int row = 1; row <= number; row++){
+                for (int column = 1; column <= number; column++){
+                    if (isStar(row, column, number)){
+                        System.out.print("*");
+                    } else {
+                        System.out.print(" ");
+                    }
+                    if (column == number){
+                        System.out.println("");
+                    }
+                }
+
+            }
+        }
+
+        public static boolean isStar(int row, int column,int total){
+            return (row == 1 || row == total || column == 1 || column == total || row == column || (column == total - row + 1));
+        }
     }
 
 
