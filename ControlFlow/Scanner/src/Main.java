@@ -3,6 +3,10 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args){
+        readAndSumXNumbers(6);
+    }
+
+    public static void firstScanner(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your year of birth");
 
@@ -10,7 +14,6 @@ public class Main {
         if (!hasNextInt){
             System.out.println("Please enter a number"); return;
         }
-
 
         int yearOfBirth = scanner.nextInt();
 
@@ -26,6 +29,38 @@ public class Main {
 
         System.out.println("You are " + age + " years old and your name is " + name + ".");
         scanner.close();
+
     }
+
+    public static int getValidNumber(int count){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter a number: (#" + count + ")");
+
+        boolean hasNextInt = scanner.hasNextInt();
+        if (hasNextInt){
+            int result = scanner.nextInt();
+            return result;
+        }
+
+        scanner.close();
+        return -1;
+    }
+
+    public static void readAndSumXNumbers(int numberOfNumbers){
+        int total = 0;
+        System.out.println("Summing "+ numberOfNumbers + " numbers.");
+
+        for(int i = 1; i <= numberOfNumbers; i++){
+            int number = getValidNumber(i);
+            if (number == -1) {
+                System.out.println("Please only enter numbers. Exiting program.");
+                return;
+            }else {
+                total +=number;
+            }
+        }
+        System.out.println("Your total is " + total);
+    }
+
 
 }

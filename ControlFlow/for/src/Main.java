@@ -16,7 +16,7 @@ public class Main {
 //        System.out.println(NumberPalindrome.isPalindrome(332233));
 //        System.out.println(sumOfDigits(112345640));
 //        NumberToWords.printWords(506607984);
-          DiagonalStar.printSquareStar(20);
+          DiagonalStar.printSquareStar(18);
 
     }
 
