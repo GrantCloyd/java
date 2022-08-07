@@ -3,7 +3,8 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args){
-        readAndSumXNumbers(6);
+//        readAndSumXNumbers(6);
+        minMaxNumberReader(5);
     }
 
     public static void firstScanner(){
@@ -60,6 +61,30 @@ public class Main {
             }
         }
         System.out.println("Your total is " + total);
+    }
+
+    public static void minMaxNumberReader(int count){
+        Scanner scanner = new Scanner(System.in);
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+
+        int i = 1;
+        while (i <= count){
+            System.out.println("Enter a whole number (number " + i + " of " + count + ")");
+            boolean isInt = scanner.hasNextInt();
+            if (isInt){
+                int number = scanner.nextInt();
+                min = number < min ? number : min;
+                max = number > max ? number : max;
+                i++;
+            }else {
+                System.out.println("Not a number. Please enter a number");
+            }
+            scanner.nextLine();
+        }
+
+        System.out.println("Your min number is: " + min + ", and your max number is: " + max + "!" );
+        scanner.close();
     }
 
 
