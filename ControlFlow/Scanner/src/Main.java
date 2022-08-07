@@ -64,6 +64,10 @@ public class Main {
     }
 
     public static void minMaxNumberReader(int count){
+        if (count <= 0){
+            System.out.println("Not a valid entry");
+            return;
+        }
         Scanner scanner = new Scanner(System.in);
         int min = Integer.MAX_VALUE;
         int max = Integer.MIN_VALUE;
@@ -78,11 +82,15 @@ public class Main {
                 max = number > max ? number : max;
                 i++;
             }else {
-                System.out.println("Not a number. Please enter a number");
+                System.out.println("Not a whole number. Rendering min/max");
+                break;
             }
             scanner.nextLine();
         }
-
+        if (min == Integer.MAX_VALUE && max == Integer.MIN_VALUE){
+            System.out.println("You didn't enter any numbers. Good day sir");
+            return;
+        }
         System.out.println("Your min number is: " + min + ", and your max number is: " + max + "!" );
         scanner.close();
     }
