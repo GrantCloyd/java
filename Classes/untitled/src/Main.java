@@ -5,6 +5,8 @@ public class Main {
         Car secondCar = new Car();
 
         firstCar.setModel("Porsche");
-        System.out.println(firstCar.getModel());
+        System.out.println("Model for first car is " + firstCar.getModel());
+        secondCar.setModel("Ford");
+        System.out.println("Model for second car is " + secondCar.getModel());
     }
 }
